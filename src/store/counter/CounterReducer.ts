@@ -17,16 +17,11 @@ export const counterReducer: Reducer<Counter, Action> = (
   state = defaultState,
   action: CounterActionTypes
 ) => {
-  const nextState = {
-    count: state.count,
-  };
   switch (action.type) {
     case INCREMENT_COUNTER:
-      nextState.count = state.count + 1;
-      return nextState;
+      return {...state, count: state.count + 1}
     case DECREMENT_COUNTER:
-      nextState.count = state.count - 1;
-      return nextState;
+      return {...state, count: state.count - 1}
     default:
       return state;
   }

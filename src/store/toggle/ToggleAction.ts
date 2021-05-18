@@ -1,3 +1,5 @@
+import { AppActions } from "../models/actions";
+
 export const TOGGLE = 'TOGGLE';
 interface ToggleClick {
   type: typeof TOGGLE;
@@ -6,7 +8,7 @@ interface ToggleClick {
 
 export type ToggleActionTypes = ToggleClick;
 
-export const toggleClick = () => ({
+export const toggleClick = (): AppActions => ({
   type: TOGGLE,
 });
 
