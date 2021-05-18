@@ -2,11 +2,13 @@ import {
   CounterActionTypes,
   INCREMENT_COUNTER,
   DECREMENT_COUNTER,
-} from './models/actions';
+} from './CounterAction';
 
-import { Counter } from './models/Counter';
+
 import { Action, Reducer } from 'redux';
-
+export interface Counter {
+  count: number;
+}
 const defaultState: Counter = {
   count: 0,
 };

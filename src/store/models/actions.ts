@@ -1,3 +1,3 @@
-import { CounterActionTypes } from '../counter/models/actions';
-
-export type AppActions = CounterActionTypes; // | TodoActionTypes
+import { CounterActionTypes } from '../counter/CounterAction';
+import { ToggleActionTypes } from '../toggle/ToggleAction';
+export type AppActions = CounterActionTypes | ToggleActionTypes; // | TodoActionTypes

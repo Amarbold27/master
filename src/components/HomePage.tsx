@@ -1,26 +1,30 @@
-import React, { Component } from 'react';
-
+import React, { Component,MouseEvent } from 'react';
+import { useSelector,useDispatch } from "react-redux";
 import Button from './CounterButton';
+import {AppState} from '../store/rootStore'
+import { AppActions } from '../store/models/actions';
+import { decrementCount, incrementCount } from '../store/counter/CounterAction';
 
-interface Props {
-  increment: () => void;
-  decrement: () => void;
-  count: number;
-}
-
-export default class HomePage extends Component {
-  render() {
-    const { count, increment, decrement } = this.props as Props;
-    return (
+export default function HomePage() {
+  const count = useSelector<AppState,number>(state=> state.counterReducer.count);
+  const status = useSelector<AppState, boolean>(state => state.toggleReducer.click);
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(incrementCount())
+  }
+  const handleClick1 = () => {
+    dispatch(decrementCount())
+ }
+  return (
       <div style={{ textAlign: 'center', marginTop: '40px', fontSize: '2rem' }}>
-        <span>{count}</span>
-        <Button handleClick={increment} color={'lightgreen'}>
+      <span>{count}</span>
+        <button onClick={handleClick} color={'lightgreen'}>
           Increment
-        </Button>
-        <Button handleClick={decrement} color={'orange'}>
-          Decrement
-        </Button>
+        </button>
+        <button onClick={handleClick1} color={'orange'}>
+        Decrement
+        </button>
+      <p></p>
       </div>
     );
-  }
 }
